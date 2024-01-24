@@ -1,5 +1,5 @@
 class Bullet {
-  constructor(ctx, x, y) {
+  constructor(ctx, x, y, vy = SPEED_BULLET) {
     this.ctx = ctx;
 
     this.x = x;
@@ -7,7 +7,7 @@ class Bullet {
     this.w = Math.ceil(BULLET_WIDTH / 12);
     this.h = Math.ceil(BULLET_HEIGHT / 12);
 
-    this.vy = SPEED_BULLET
+    this.vy = vy;
     this.angle = 0;
 
     this.sprite = new Image();

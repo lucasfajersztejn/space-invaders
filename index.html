@@ -4,12 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Invaders Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-  <canvas id="canvas-game"></canvas>
+
+  <div id="start-panel">
+    <button id="button-start">START</button>
+  </div>
+
+  <div id="container-canvas" class="container-canvas hidden">
+    <canvas id="canvas-game"></canvas>
+  </div>
+  
 
   <script src="/assets/js/constants.js"></script>
   <script src="/assets/js/models/background.js"></script>
+  <script src="/assets/js/models/points.js"></script>
   <script src="/assets/js/models/ship.js"></script>
   <script src="/assets/js/models/enemy.js"></script>
   <script src="/assets/js/models/bullet.js"></script>

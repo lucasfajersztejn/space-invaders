@@ -22,5 +22,10 @@ const SPEED_BULLET = 5;
 /**** ENEMY ****/
 const ENEMY_WIDTH = 226;
 const ENEMY_HEIGHT = 400;
-const ENEMY_SPEED = 5;
+const ENEMY_SPEED = 3;
 const ENEMY_WIDTH_LIMIT = 675 // entran 15 enemigos dejando uno de espacio entran 8
+const ENEMY_RUN_ANIMATION = 100;
+
+/**** LIVES ****/
+const LIVES_WIDTH = 512;
+const LIVES_HEIGHT = 512;

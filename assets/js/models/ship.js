@@ -8,6 +8,7 @@ class Ship {
     this.h = Math.ceil(SHIP_HEIGHT / 10);
 
     this.vx = SPEED_MOVE;
+    this.lives = 5;
 
     this.sprite = new Image()
     this.sprite.src = '/assets/img/ship.png';
@@ -30,6 +31,10 @@ class Ship {
 
     this.bullets = [];
 
+  }
+
+  isDead() {
+    return this.lives <= 0;
   }
 
   fire() {
@@ -79,6 +84,8 @@ class Ship {
     this.bullets.forEach((bullet) => bullet.move());
   }
 
+  col
+
   draw() {
     if (this.sprite.isReady) {
       this.ctx.drawImage(
@@ -96,4 +103,14 @@ class Ship {
 
     this.bullets.forEach((bullet) => bullet.draw());
   }
+
+  collidesWith(element) {
+    return (
+      this.x + this.w > element.x &&
+      this.x < element.x + element.w &&
+      this.y + this.h > element.y &&
+      this.y < element.y + element.h
+    )
+  }
+
 }

@@ -11,6 +11,7 @@ class Game {
 
     this.backGround = new Background(this.ctx);
     this.ship = new Ship(this.ctx, 334, 670);
+    this.score = new Points(this.ctx, 15, 15);
     this.enemies = [];
 
   }
@@ -22,7 +23,7 @@ class Game {
   generateEnemies() {
     this.enemies_respawn = 0;
     let margin = 150;
-    const limit = ENEMY_WIDTH_LIMIT / Math.ceil(ENEMY_WIDTH / 5);
+    const limit = 20; //ENEMY_WIDTH_LIMIT / Math.ceil(ENEMY_WIDTH / 5);
     const enemy_w = Math.ceil(ENEMY_WIDTH / 5);
 
     for (let i = 0; i < limit; i++) {
@@ -33,7 +34,7 @@ class Game {
       } else {
         margin += 60;
       }
-    }
+    }  
   }
 
   start() {
@@ -44,6 +45,7 @@ class Game {
         this.checkCollisions();
         this.enemies_respawn === 180 ? this.generateEnemies() : this.enemies_respawn++;
         this.draw();
+        this.win();
       }, this.fps);
     }
   }
@@ -53,7 +55,14 @@ class Game {
     this.drawIntervalId = undefined;
   }
 
+  win() {
+    if (this.score.points === 30) {
+      this.stop();
+    }
+  }
+
   gameOver() {
+    this.score.heartImages.pop();
     this.stop();
   }
 
@@ -70,12 +79,16 @@ class Game {
         enemyCollision.lives--;
         if (enemyCollision.isDead()){
           this.enemies = this.enemies.filter(enemy => enemy !== enemyCollision);
+          this.score.winPoints();
         }
         return false;
       } else {
         return true;
       }
     });
+
+    this.enemies.forEach((enemy) => enemy.collision(this.ship, this.gameOver));
+    if (this.ship.isDead()) {this.gameOver()};
 
   }
 
@@ -86,14 +99,17 @@ class Game {
 
   draw() {
     this.backGround.draw();
+    this.score.draw(this.ship.lives);
     this.ship.draw();
     this.enemies.forEach((enemy) => enemy.draw());
+    
   }
 
   clear() {
     this.ship.clear();
-    this.enemies.filter((enemy) => !enemy.isDead());
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.enemies.forEach(enemy => enemy.clear());
+    this.score.clear(this.score.heartImages, this.ship.lives);
   }
 
 }
