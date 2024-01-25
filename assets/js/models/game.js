@@ -14,6 +14,7 @@ class Game {
     this.score = new Points(this.ctx, 15, 15);
     this.enemies = [];
 
+    this.endGame = false;
   }
 
   onKeyEvent(event) {
@@ -41,10 +42,21 @@ class Game {
     if (!this.drawIntervalId) {
       this.drawIntervalId = setInterval(() => {
         this.clear();
-        this.move();
-        this.checkCollisions();
-        this.enemies_respawn === 180 ? this.generateEnemies() : this.enemies_respawn++;
+
+        if (!this.isGameOver) {
+          this.move();
+          this.checkCollisions();
+          this.enemies_respawn === 180 ? this.generateEnemies() : this.enemies_respawn++;
+        }
+        
         this.draw();
+        if (this.isGameOver) {
+          this.ship.deathExplotion();
+          if (this.ship.spriteExplotion['horizontalFrameIndex'] === 14) {
+            this.ship.spriteExplotion['isReady'] = false;
+          }
+        }
+        
         this.win();
       }, this.fps);
     }
@@ -53,6 +65,7 @@ class Game {
   stop() {
     clearInterval(this.drawIntervalId);
     this.drawIntervalId = undefined;
+    this.endGame = true;
   }
 
   win() {
@@ -62,8 +75,14 @@ class Game {
   }
 
   gameOver() {
-    this.score.heartImages.pop();
-    this.stop();
+    this.score.heartImages.pop(); // Elimina el último corazon
+    this.isGameOver = true
+    this.ship.sprite['isReady'] = false;
+    setTimeout(() => {
+      
+      this.stop();
+    }, 216.8);
+    
   }
 
   checkCollisions() {
@@ -88,7 +107,10 @@ class Game {
     });
 
     this.enemies.forEach((enemy) => enemy.collision(this.ship, this.gameOver));
-    if (this.ship.isDead()) {this.gameOver()};
+    if (this.ship.isDead()) {
+      this.gameOver();
+      
+    };
 
   }
 
@@ -102,7 +124,7 @@ class Game {
     this.score.draw(this.ship.lives);
     this.ship.draw();
     this.enemies.forEach((enemy) => enemy.draw());
-    
+    //this.ship.deathExplotion();
   }
 
   clear() {

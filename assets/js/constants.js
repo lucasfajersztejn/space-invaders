@@ -9,6 +9,8 @@ const SHIP_WIDTH = 720;
 const SHIP_HEIGHT = 713;
 const SPEED_MOVE = 5;
 const SHIP_BULLET_RECHARGED = 200;
+const EXPLOTION_WIDTH = 160;
+const EXPLOTION_HEIGHT = 170;
 
 const KEY_RIGHT = 39;
 const KEY_LEFT = 37;

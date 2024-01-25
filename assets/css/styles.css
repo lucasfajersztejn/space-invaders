@@ -25,10 +25,40 @@ body {
   height: 768px;
   background-image: url('/assets/img/posibles-backgrounds/start-panel2.jpg');
   background-size: cover;
-  
+  position: relative;
 }
 
 #button-start {
-
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 85%;
+  left: 45%;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: #cc0000;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 0 rgb(216, 119, 0);
+  opacity: 0.8;
 }
 
+#button-start:hover {
+  background-color: #990000;
+  opacity: 0.6;
+}
+
+#button-start:active {
+  background-color: darkred;
+  opacity: 0.4;
+}
+
+#end-panel{
+  width: 768px;
+  height: 768px;
+  background-image: '/assets/img/GameOver.jpg';
+  background-size: cover;
+}

@@ -7,6 +7,10 @@ class Ship {
     this.w = Math.ceil(SHIP_WIDTH / 10);
     this.h = Math.ceil(SHIP_HEIGHT / 10);
 
+    this.wExplotion = EXPLOTION_WIDTH;
+    this.hExplotion = EXPLOTION_HEIGHT;
+    this.countIndex = 0;
+
     this.vx = SPEED_MOVE;
     this.lives = 5;
 
@@ -20,6 +24,18 @@ class Ship {
       this.sprite.isReady = true;
       this.sprite.frameWidth = Math.ceil(this.sprite.width / this.sprite.horizontalFrames);
       this.sprite.frameHeight = Math.ceil(this.sprite.height / this.sprite.verticalFrames);
+    }
+
+    this.spriteExplotion = new Image();
+    this.spriteExplotion.src = '/assets/img/explosion.png';
+    this.spriteExplotion.verticalFrames = 1;
+    this.spriteExplotion.verticalFrameIndex = 0;
+    this.spriteExplotion.horizontalFrames = 15;
+    this.spriteExplotion.horizontalFrameIndex = 0;
+    this.spriteExplotion.onload = () => {
+      this.spriteExplotion.isReady = true;
+      this.spriteExplotion.frameWidth = Math.ceil(this.spriteExplotion.width / this.spriteExplotion.horizontalFrames);
+      this.spriteExplotion.frameHeight = Math.ceil(this.spriteExplotion.height / this.spriteExplotion.verticalFrames);
     }
 
     this.movements = {
@@ -84,7 +100,23 @@ class Ship {
     this.bullets.forEach((bullet) => bullet.move());
   }
 
-  col
+  deathExplotion() {
+    if(this.spriteExplotion.isReady) {
+      this.ctx.drawImage(
+        this.spriteExplotion,
+        this.spriteExplotion.horizontalFrameIndex * this.spriteExplotion.frameWidth,
+        this.spriteExplotion.verticalFrameIndex * this.spriteExplotion.frameHeight,
+        this.spriteExplotion.frameWidth,
+        this.spriteExplotion.frameHeight,
+        this.x -40,
+        this.y -60,
+        this.wExplotion,
+        this.hExplotion,
+      );
+      
+      this.spriteExplotion.horizontalFrameIndex = (this.spriteExplotion.horizontalFrameIndex + 1) % this.spriteExplotion.horizontalFrames;
+    }
+  }
 
   draw() {
     if (this.sprite.isReady) {

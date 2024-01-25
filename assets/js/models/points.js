@@ -70,7 +70,7 @@ class Points {
   draw(lives) {
     this.ctx.save();
     this.ctx.fillStyle = 'white'; 
-    this.ctx.fillRect(this.x + 12, this.y + 20, 80, 20);
+    this.ctx.fillRect(this.x + 12, this.y + 20, 92, 20);
 
     this.ctx.fillStyle = 'black';
     this.ctx.font = '20px Prompt';

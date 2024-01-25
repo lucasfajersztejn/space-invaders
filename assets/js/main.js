@@ -5,12 +5,18 @@ window.addEventListener('load',() => {
 
   const startButton = document.getElementById('button-start');
   startButton.addEventListener('click', () => {
-    const startPanel = document.getElementById('start-panel');
-    startPanel.classList.add('hidden');
+    setTimeout(() => {
+      const startPanel = document.getElementById('start-panel');
+      startPanel.classList.add('hidden');
     
-    const gamePanel = document.getElementById('container-canvas');
-    gamePanel.classList.remove('hidden');
+      const gamePanel = document.getElementById('container-canvas');
+      gamePanel.classList.remove('hidden');
 
-    game.start();
+      game.start();
+    }, 500);
   });
+
+  
+
+
 });
