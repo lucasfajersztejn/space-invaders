@@ -63,6 +63,10 @@ class Points {
 
   }
 
+  restart() {
+    this.points = 0;
+  }
+
   winPoints(amount = 1) {
     this.points += amount;
   }

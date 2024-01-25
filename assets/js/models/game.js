@@ -14,7 +14,8 @@ class Game {
     this.score = new Points(this.ctx, 15, 15);
     this.enemies = [];
 
-    this.endGame = false;
+    this.winGame = false;
+    this.isGameOver = false;
   }
 
   onKeyEvent(event) {
@@ -38,11 +39,26 @@ class Game {
     }  
   }
 
+  restart() {
+    this.score.restart();
+    this.enemies_respawn = 0;
+    this.ship.sprite['isReady'] = true;
+    this.isGameOver = false;
+    this.endGame = undefined;
+    this.drawIntervalId = undefined;
+    this.start();
+  }
+
   start() {
     if (!this.drawIntervalId) {
+      
       this.drawIntervalId = setInterval(() => {
         this.clear();
-
+        console.log('Dentro del intervalo');
+        console.log(this.drawIntervalId); //10
+        console.log(this.ship.sprite['isReady']); //true
+        console.log(this.isGameOver); //false
+        console.log(this.endGame); //undefined
         if (!this.isGameOver) {
           this.move();
           this.checkCollisions();
@@ -76,10 +92,10 @@ class Game {
 
   gameOver() {
     this.score.heartImages.pop(); // Elimina el último corazon
-    this.isGameOver = true
+    this.isGameOver = true;
+    this.enemies.splice(0, this.enemies.length);
     this.ship.sprite['isReady'] = false;
     setTimeout(() => {
-      
       this.stop();
     }, 216.8);
     
