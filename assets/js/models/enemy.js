@@ -88,7 +88,7 @@ class Enemy {
       this.shootCount++;
       if (this.shootCount > this.candeciaDeTiro) {
         this.shootCount = 0
-        this.bullets.push(new Bullet(this.ctx, this.x + (this.w / 2), this.y + this.h, -5));
+        this.bullets.push(new Enemybullet(this.ctx, this.x + (this.w / 2), this.y + this.h, -5));
       }
 
       this.ctx.drawImage(

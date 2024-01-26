@@ -17,10 +17,20 @@
   <section>
     <div id="start-panel">
       <button id="button-start">START</button>
+      <button class="button-score">SCORE</button>
+      <input type="text" id="user-name" placeholder="Player one">
     </div>
 
     <div id="gameOver-panel" class="hidden">
       <button id="button-restart">RESTART</button>
+      <button class="button-score-two">SCORE</button>
+      <button class="mainMenu">START MENU</button>
+    </div>
+
+    <div id="scores-panel" class="hidden">
+      <button class="mainMenuTwo">START MENU</button>
+      <ul class="scores-list">
+      </ul>
     </div>
 
     <div id="container-canvas" class="container-canvas hidden">
@@ -35,6 +45,8 @@
   <script src="/assets/js/models/ship.js"></script>
   <script src="/assets/js/models/enemy.js"></script>
   <script src="/assets/js/models/bullet.js"></script>
+  <script src="/assets/js/models/bulletEnemy.js"></script>
+  <script src="/assets//js/models/bulletSpecial.js"></script>
   <script src="/assets/js/models/game.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>

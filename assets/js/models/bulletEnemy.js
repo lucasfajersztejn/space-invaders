@@ -1,17 +1,17 @@
-class Bullet {
+class Enemybullet {
   constructor(ctx, x, y, vy = SPEED_BULLET) {
     this.ctx = ctx;
 
     this.x = x;
     this.y = y;
-    this.w = Math.ceil(BULLET_WIDTH / 12);
-    this.h = Math.ceil(BULLET_HEIGHT / 12);
+    this.w = Math.ceil(BULLET_ENEMY_WIDTH / 35);
+    this.h = Math.ceil(BULLET_ENEMY_HEIGHT / 35);
 
     this.vy = vy;
     this.angle = 0;
 
     this.sprite = new Image();
-    this.sprite.src = '/assets/img/bullet.png';
+    this.sprite.src = '/assets/img/bulletEnemy.png';
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 1;
@@ -47,12 +47,7 @@ class Bullet {
 
       this.ctx.restore()
     }
-    
-    this.animate();
   }
 
-  animate() {
-    this.angle += 0.1;
-  }
 
 }

@@ -10,6 +10,7 @@ class Ship {
     this.wExplotion = EXPLOTION_WIDTH;
     this.hExplotion = EXPLOTION_HEIGHT;
     this.countIndex = 0;
+    this.countSpecialAttack = 0;
 
     this.vx = SPEED_MOVE;
     this.lives = 5;
@@ -42,7 +43,8 @@ class Ship {
       right: false,
       left: false,
       isShutting: false,
-      keyUp: false
+      keyUp: false,
+      specialAttack: false
     }
 
     this.bullets = [];
@@ -54,10 +56,18 @@ class Ship {
   }
 
   fire() {
-    if(!this.movements.isShutting) {
+    if (!this.movements.isShutting) {
       this.movements.isShutting = true;
       this.bullets.push(new Bullet(this.ctx, this.x + (this.w / 3) + 4, this.y));
       setTimeout(() => this.movements.isShutting = false, SHIP_BULLET_RECHARGED);
+    }
+  }
+
+  fireSpecialAttack() {
+    if (!this.movements.specialAttack) {
+      this.movements.specialAttack = true;
+      this.bullets.push(new SpecialBullet(this.ctx, this.x + (this.w / 3) + 4, this.y));
+      setTimeout(() => this.movements.specialAttack = false, SHIP_BULLET_RECHARGED);
     }
   }
 
@@ -65,7 +75,7 @@ class Ship {
     this.bullets = this.bullets.filter((bullet) => bullet.y < this.ctx.canvas.height);
   }
 
-  onKeyEvent(event) {
+  onKeyEvent(event, points) {
     const enabled = event.type === 'keydown';
     const keyUp = event.type === 'keyup';
 
@@ -77,8 +87,20 @@ class Ship {
         this.movements.left = enabled;
         break;
       case KEY_FIRE:
-        if(enabled) {
+        if (enabled) {
           this.fire();
+        }
+        break;
+      case KEY_SPECIAL_POWER:
+        if (points >= 20 && this.countSpecialAttack < 1) {
+          this.countSpecialAttack++;
+          this.fireSpecialAttack();
+        } else if (points >= 40 && this.countSpecialAttack < 2) {
+          this.countSpecialAttack++;
+          this.fireSpecialAttack();
+        } else if (points >= 60 && this.countSpecialAttack < 3) {
+          this.countSpecialAttack++;
+          this.fireSpecialAttack();
         }
         break;
     }

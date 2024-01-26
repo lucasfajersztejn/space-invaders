@@ -19,7 +19,7 @@ class Game {
   }
 
   onKeyEvent(event) {
-    this.ship.onKeyEvent(event);
+    this.ship.onKeyEvent(event, this.score.points);
   }
 
   generateEnemies() {
@@ -37,16 +37,6 @@ class Game {
         margin += 60;
       }
     }  
-  }
-
-  restart() {
-    this.score.restart();
-    this.enemies_respawn = 0;
-    this.ship.sprite['isReady'] = true;
-    this.isGameOver = false;
-    this.endGame = false;
-    this.drawIntervalId = undefined;
-    this.start();
   }
 
   start() {
@@ -77,10 +67,15 @@ class Game {
     clearInterval(this.drawIntervalId);
     this.drawIntervalId = undefined;
     this.endGame = true;
+    let name = document.getElementById('user-name').value;
+    if (name === "") {
+      name = 'Player 1';
+    }
+    this.saveScoreName(name);
   }
 
   win() {
-    if (this.score.points === 30) {
+    if (this.score.points === 80) {
       this.stop();
     }
   }
@@ -92,8 +87,7 @@ class Game {
     this.ship.sprite['isReady'] = false;
     setTimeout(() => {
       this.stop();
-    }, 216.8);
-    
+    }, 216.8);  
   }
 
   checkCollisions() {
@@ -122,7 +116,6 @@ class Game {
       this.gameOver();
       
     };
-
   }
 
   move() {
@@ -135,7 +128,12 @@ class Game {
     this.score.draw(this.ship.lives);
     this.ship.draw();
     this.enemies.forEach((enemy) => enemy.draw());
-    //this.ship.deathExplotion();
+  }
+
+  saveScoreName(name) {
+    const scores = localStorage.getItem(SCORE_KEY) ? JSON.parse(localStorage.getItem(SCORE_KEY)) : {};
+    scores[name] = this.score.points;
+    localStorage.setItem(SCORE_KEY, JSON.stringify(scores));
   }
 
   clear() {
