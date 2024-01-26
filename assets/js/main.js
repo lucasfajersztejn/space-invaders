@@ -39,8 +39,8 @@ window.addEventListener('load',() => {
             if (game.endGame) {
               clearInterval(intervalId);
             }
-          }, 1000);
-        }, 1000);
+          }, 3000);
+        }, 2000);
         
       });
       
@@ -77,8 +77,8 @@ window.addEventListener('load',() => {
               clearInterval(intervalId);
             }
 
-          }, 1000);
-        }, 1000);
+          }, 3000);
+        }, 2000);
       });
     }, 500);
   });
