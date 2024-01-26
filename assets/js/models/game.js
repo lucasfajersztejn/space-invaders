@@ -44,7 +44,7 @@ class Game {
     this.enemies_respawn = 0;
     this.ship.sprite['isReady'] = true;
     this.isGameOver = false;
-    this.endGame = undefined;
+    this.endGame = false;
     this.drawIntervalId = undefined;
     this.start();
   }
@@ -54,11 +54,6 @@ class Game {
       
       this.drawIntervalId = setInterval(() => {
         this.clear();
-        console.log('Dentro del intervalo');
-        console.log(this.drawIntervalId); //10
-        console.log(this.ship.sprite['isReady']); //true
-        console.log(this.isGameOver); //false
-        console.log(this.endGame); //undefined
         if (!this.isGameOver) {
           this.move();
           this.checkCollisions();

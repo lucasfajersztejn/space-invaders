@@ -22,8 +22,8 @@ const BULLET_HEIGHT = 198;
 const SPEED_BULLET = 5;
 
 /**** ENEMY ****/
-const ENEMY_WIDTH = 226;
-const ENEMY_HEIGHT = 400;
+const ENEMY_WIDTH = 465;
+const ENEMY_HEIGHT = 410;
 const ENEMY_SPEED = 3;
 const ENEMY_WIDTH_LIMIT = 675 // entran 15 enemigos dejando uno de espacio entran 8
 const ENEMY_RUN_ANIMATION = 100;

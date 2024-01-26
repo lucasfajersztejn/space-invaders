@@ -4,8 +4,8 @@ class Enemy {
   
     this.x = x;
     this.y = y;
-    this.w = Math.ceil(ENEMY_WIDTH / 6);
-    this.h = Math.ceil(ENEMY_HEIGHT / 6);
+    this.w = Math.ceil(ENEMY_WIDTH / 12);
+    this.h = Math.ceil(ENEMY_HEIGHT / 8);
 
     this.vy = ENEMY_SPEED;
     this.vx = ENEMY_SPEED;
@@ -21,8 +21,7 @@ class Enemy {
     this.animationTick = 0;
 
     this.sprite = new Image();
-    //this.sprite.src = `/assets/img/e${this.number}.png`;
-    this.sprite.src = `/assets/img/enemySprite.png`;
+    this.sprite.src = `/assets/img/alien1Sprite.png`;
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 2;
