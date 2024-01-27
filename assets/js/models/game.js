@@ -10,9 +10,10 @@ class Game {
     this.enemies_respawn = 0;
 
     this.backGround = new Background(this.ctx);
-    this.ship = new Ship(this.ctx, 334, 670);
+    this.ship = new Ship(this.ctx, 334, 670, );
     this.score = new Points(this.ctx, 15, 15);
     this.enemies = [];
+    this.sound_permission = true;
 
     this.winGame = false;
     this.isGameOver = false;
@@ -30,9 +31,9 @@ class Game {
 
     for (let i = 0; i < limit; i++) {
       if (i === 0) {
-        this.enemies.push(new Enemy(this.ctx, margin, 20))
+        this.enemies.push(new Enemy(this.ctx, margin, 20, this.sound_permission))
       } else if (i % 2 === 0) {
-        this.enemies.push(new Enemy(this.ctx, margin, 20))
+        this.enemies.push(new Enemy(this.ctx, margin, 20, this.sound_permission))
       } else {
         margin += 60;
       }
@@ -75,6 +76,20 @@ class Game {
     this.saveScoreName(name);
   }
 
+  stopAllSounds() {
+    //this.ship.shootSound.pause();
+    this.ship.sound_permission = false
+    //this.enemies.forEach(enemy => enemy.shootEnemySound.pause());
+    this.sound_permission = false;
+    this.enemies.forEach(enemy => enemy.sound_permission = false);
+  }
+
+  playAllSound() {
+    this.ship.sound_permission = true
+    this.sound_permission = true;
+    this.enemies.forEach(enemy => enemy.sound_permission = true);
+  }
+
   win() {
     if (this.score.points === 80) {
       this.winGame = true;
@@ -89,6 +104,10 @@ class Game {
     this.isGameOver = true;
     this.enemies.splice(0, this.enemies.length);
     this.ship.sprite['isReady'] = false;
+    const shipExplosionSound = new Audio('/assets/sounds/ship_explosion.mp3');
+    if (this.sound_permission) {
+      shipExplosionSound.play();
+    }
     setTimeout(() => {
       this.stop();
     }, 216.8);  

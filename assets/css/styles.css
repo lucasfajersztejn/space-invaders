@@ -17,6 +17,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+#soundIcon {
+  position: absolute;
+  height: 4%;
+  top: 13%;
+  left: 5%;
 }
 
 .hidden {
@@ -230,5 +238,6 @@ body {
   text-align: center;
   opacity: 0.8;
 }
+
 
 

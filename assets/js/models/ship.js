@@ -14,6 +14,7 @@ class Ship {
 
     this.vx = SPEED_MOVE;
     this.lives = 5;
+    this.sound_permission = true;
 
     this.sprite = new Image()
     this.sprite.src = '/assets/img/ship.png';
@@ -61,6 +62,12 @@ class Ship {
       this.bullets.push(new Bullet(this.ctx, this.x + (this.w / 3) + 4, this.y));
       setTimeout(() => this.movements.isShutting = false, SHIP_BULLET_RECHARGED);
     }
+
+    const shootSound = new Audio('/assets/sounds/ship_shoot.mp3');
+    if (this.sound_permission) {
+      shootSound.play();
+    }
+    
   }
 
   fireSpecialAttack() {

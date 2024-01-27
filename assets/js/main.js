@@ -2,6 +2,8 @@ window.addEventListener('load',() => {
   // const game = new Game('canvas-game');
   let games = [];
   const scores = [];
+  let count = 0;
+  const soundClickButton = new Audio('/assets/sounds/buttonClick.mp3')
 
   games.forEach((game) => {
     document.addEventListener('keydown', (event) => game.onKeyEvent(event));
@@ -19,6 +21,7 @@ window.addEventListener('load',() => {
   // Button start
   const startButton = document.getElementById('button-start');
   startButton.addEventListener('click', () => {
+    soundClickButton.play()
     games = games.filter((game) => !game.endGame);
     games.push(new Game('canvas-game'));
     setTimeout(() => {
@@ -68,6 +71,7 @@ window.addEventListener('load',() => {
   // Button restart
   const restart = document.getElementById('button-restart');
   restart.addEventListener('click', () => {
+    soundClickButton.play()
     games = games.filter((game) => !game.endGame);
     games.push(new Game('canvas-game'));
 
@@ -114,6 +118,7 @@ window.addEventListener('load',() => {
 
   const restartTwo = document.querySelector('.button-restartGame');
   restartTwo.addEventListener('click', () => {
+    soundClickButton.play()
     games = games.filter((game) => !game.endGame);
     console.log(games);
     games.push(new Game('canvas-game'));
@@ -162,16 +167,19 @@ window.addEventListener('load',() => {
   // Button scores
   const buttonScores = document.querySelector('.button-score');
   buttonScores.addEventListener('click', () => {
+    soundClickButton.play();
     hidenAndLoadData();
   });
 
   const buttonScoresTwo = document.querySelector('.button-score-two');
   buttonScoresTwo.addEventListener('click', () => {
+    soundClickButton.play()
     hidenAndLoadData();
   });
 
   const buttonScoresThree = document.querySelector('.button-score-three');
   buttonScoresThree.addEventListener('click', () => {
+    soundClickButton.play()
     hidenAndLoadData();
   })
 
@@ -209,6 +217,7 @@ window.addEventListener('load',() => {
   // Button Main menu
   const mainMenu = document.querySelector('.mainMenu');
   mainMenu.addEventListener('click', () => {
+    soundClickButton.play();
     gameOverPanel.classList.add('hidden');
     startPanel.classList.remove('hidden');
     games = games.filter((game) => !game.endGame);
@@ -216,6 +225,7 @@ window.addEventListener('load',() => {
   
   const mainMenuTwo = document.querySelector('.mainMenuTwo');
   mainMenuTwo.addEventListener('click', () => {
+    soundClickButton.play();
     scoresPanel.classList.add('hidden');
     startPanel.classList.remove('hidden');
     games = games.filter((game) => !game.endGame);
@@ -223,9 +233,39 @@ window.addEventListener('load',() => {
 
   const mainMenuThree = document.querySelector('.button-mainMenuThree');
   mainMenuThree.addEventListener('click', () => {
+    soundClickButton.play();
     winGamePanel.classList.add('hidden');
     startPanel.classList.remove('hidden');
     games = games.filter((game) => !game.endGame);
+  });
+
+  // Button sound canvas
+  const buttonSoundCanvas = document.getElementById('soundIcon');
+  buttonSoundCanvas.addEventListener('click', () => {
+    games = games.filter((game) => !game.endGame);
+    games.forEach((game) => {
+      if (count === 0) {
+        count++;
+        game.stopAllSounds();
+      } else if (count === 1) {
+        count--;
+        game.playAllSound();
+      }
+      
+      // if (count === 0) {
+      //   count++;
+      //   game.ship.sound_permission = false;
+      //   game.enemies.forEach((enemy) => enemy.sound_permission = false);
+      //   console.log('false');
+
+      // } else if (count === 1) {
+      //   count--;
+      //   game.ship.sound_permission = true;
+      //   game.enemies.forEach((enemy) => enemy.sound_permission = true);
+      //   console.log('true');
+      // }      
+    });
+    
   });
 
 

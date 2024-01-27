@@ -1,5 +1,5 @@
 class Enemy {
-  constructor(ctx, x, y) {
+  constructor(ctx, x, y, sound_permission) {
     this.ctx = ctx;
   
     this.x = x;
@@ -19,6 +19,8 @@ class Enemy {
     this.lr = 0
     this.lives = 1;
     this.animationTick = 0;
+    this.sound_permission = sound_permission; 
+    this.shootEnemySound = new Audio('/assets/sounds/enemies_shoot.mp3');
 
     this.sprite = new Image();
     this.sprite.src = `/assets/img/alien1Sprite.png`;
@@ -89,6 +91,11 @@ class Enemy {
       if (this.shootCount > this.candeciaDeTiro) {
         this.shootCount = 0
         this.bullets.push(new Enemybullet(this.ctx, this.x + (this.w / 2), this.y + this.h, -5));
+        
+        if (this.sound_permission) {
+          this.shootEnemySound.play();
+        }
+      
       }
 
       this.ctx.drawImage(
