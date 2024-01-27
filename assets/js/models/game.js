@@ -67,6 +67,7 @@ class Game {
     clearInterval(this.drawIntervalId);
     this.drawIntervalId = undefined;
     this.endGame = true;
+    ENEMY_SPEED = 3;
     let name = document.getElementById('user-name').value;
     if (name === "") {
       name = 'Player 1';
@@ -76,7 +77,10 @@ class Game {
 
   win() {
     if (this.score.points === 80) {
-      this.stop();
+      this.winGame = true;
+      setTimeout(() => {
+        this.stop();
+      }, 250);
     }
   }
 
@@ -98,13 +102,25 @@ class Game {
     });
 
     this.ship.bullets = this.ship.bullets.filter((bullet) => {
-      const enemyCollision = this.enemies.find(enemy => enemy.collidesWith(bullet));
-      if (enemyCollision) {
-        enemyCollision.lives--;
-        if (enemyCollision.isDead()){
-          this.enemies = this.enemies.filter(enemy => enemy !== enemyCollision);
-          this.score.winPoints();
+      let enemyCollisions = []
+      if (bullet instanceof SpecialBullet) {
+        enemyCollisions = this.enemies.filter(enemy => enemy.collidesWith(bullet));
+      } else {
+        const enemyCollision = this.enemies.find(enemy => enemy.collidesWith(bullet));
+        if (enemyCollision) {
+          enemyCollisions.push(enemyCollision);
         }
+      }
+      
+      if (enemyCollisions.length > 0) {
+        enemyCollisions.forEach((enemyCollision) => {
+          enemyCollision.lives--;
+          if (enemyCollision.isDead()){
+            this.score.winPoints();
+          }
+        }) 
+
+        this.enemies = this.enemies.filter(enemy => !enemy.isDead());
         return false;
       } else {
         return true;
@@ -121,6 +137,14 @@ class Game {
   move() {
     this.ship.move();
     this.enemies.forEach((enemy) => enemy.move());
+
+    if (this.score.points === 20) {
+      ENEMY_SPEED = 5;
+    } else if (this.score.points === 40) {
+      ENEMY_SPEED = 7;
+    } else if (this.score.points === 60) {
+      ENEMY_SPEED = 9;
+    }
   }
 
   draw() {

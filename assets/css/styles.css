@@ -31,6 +31,13 @@ body {
   position: relative;
 }
 
+#winGame-panel {
+  width: 768px;
+  height: 768px;
+  background-size: cover;
+  position: relative;
+}
+
 #button-start {
   width: 90px;
   height: 90px;
@@ -67,7 +74,8 @@ body {
   position: relative;
 }
 
-#button-restart {
+#button-restart,
+.button-restartGame {
   width: 90px;
   height: 90px;
   position: absolute;
@@ -85,12 +93,18 @@ body {
   opacity: 0.8;
 }
 
-#button-restart:hover {
+.button-restartGame {
+  left: 45%;
+}
+
+#button-restart:hover,
+.button-restartGame:hover {
   background-color: #129900;
   opacity: 0.6;
 }
 
-#button-restart:active {
+#button-restart:active,
+.button-restartGame:active {
   background-color: darkgreen;
   opacity: 0.4;
 }
@@ -103,8 +117,9 @@ body {
   position: relative;
 }
 
+.mainMenu,
 .mainMenuTwo,
-.mainMenu {
+.button-mainMenuThree {
   position: absolute;
   bottom: 3%;
   right: 3%;
@@ -127,14 +142,20 @@ body {
   left: 60%;
 }
 
+.button-mainMenuThree {
+  left: 60%;
+}
+
+.mainMenu:hover,
 .mainMenuTwo:hover,
-.mainMenu:hover {
+.button-mainMenuThree:hover {
   background-color: #009499;
   opacity: 0.6;
 }
 
+.mainMenu:active,
 .mainMenuTwo:active,
-.mainMenu:active {
+.button-mainMenuThree:active {
   background-color: rgb(0, 80, 100);
   opacity: 0.4;
 }
@@ -155,9 +176,9 @@ body {
   font-size: 15px;
   margin-bottom: 7px;
 }
-
+.button-score,
 .button-score-two,
-.button-score {
+.button-score-three {
   position: absolute;
   top: 85%;
   left: 37%;
@@ -179,15 +200,20 @@ body {
   left: 30%;
 }
 
+.button-score-three {
+  left: 30%;
+}
 
+.button-score:hover,
 .button-score-two:hover,
-.button-score:hover {
+.button-score-three:hover {
   background-color: #994500;
   opacity: 0.6;
 }
 
+.button-score:active,
 .button-score-two:active,
-.button-score:active {
+.button-score-three:active {
   background-color: rgb(100, 45, 0);
   opacity: 0.4;
 }

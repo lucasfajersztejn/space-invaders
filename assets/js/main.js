@@ -12,12 +12,14 @@ window.addEventListener('load',() => {
   const startPanel = document.getElementById('start-panel');
   const gamePanel = document.getElementById('container-canvas');
   const gameOverPanel = document.getElementById('gameOver-panel');
+  const winGamePanel = document.getElementById('winGame-panel');
   const scoresPanel = document.getElementById('scores-panel');
   const ulScores = document.querySelector('.scores-list');
 
   // Button start
   const startButton = document.getElementById('button-start');
   startButton.addEventListener('click', () => {
+    games = games.filter((game) => !game.endGame);
     games.push(new Game('canvas-game'));
     setTimeout(() => {
       
@@ -39,6 +41,18 @@ window.addEventListener('load',() => {
               gamePanel.classList.add('hidden');
               gameOverPanel.classList.remove('hidden');
             }
+
+            if (game.winGame) {          
+              game.winGame = false;    
+              const random = Math.floor(Math.random() * 10)
+              if (random <= 4) {
+                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame1.jpg')"; 
+                } else {
+                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame2.jpg')";
+                }
+              gamePanel.classList.add('hidden');
+              winGamePanel.classList.remove('hidden');
+            }
     
             if (game.endGame) {
               clearInterval(intervalId);
@@ -55,7 +69,6 @@ window.addEventListener('load',() => {
   const restart = document.getElementById('button-restart');
   restart.addEventListener('click', () => {
     games = games.filter((game) => !game.endGame);
-    console.log(games.length);
     games.push(new Game('canvas-game'));
 
     setTimeout(() => {
@@ -75,6 +88,65 @@ window.addEventListener('load',() => {
             if (game.isGameOver) {
               gamePanel.classList.add('hidden');
               gameOverPanel.classList.remove('hidden');
+            }
+
+            if (game.winGame) {      
+              game.winGame = false;        
+              const random = Math.floor(Math.random() * 10)
+              if (random <= 4) {
+                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame1.jpg')"; 
+                } else {
+                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame2.jpg')";
+                }
+              gamePanel.classList.add('hidden');
+              winGamePanel.classList.remove('hidden');
+            }
+
+            if (game.endGame) {
+              clearInterval(intervalId);
+            }
+
+          }, 1000);
+        }, 2000);
+      });
+    }, 500);
+  });
+
+  const restartTwo = document.querySelector('.button-restartGame');
+  restartTwo.addEventListener('click', () => {
+    games = games.filter((game) => !game.endGame);
+    console.log(games);
+    games.push(new Game('canvas-game'));
+
+    setTimeout(() => {
+      winGamePanel.classList.add('hidden');
+      gamePanel.classList.remove('hidden');
+
+      games.forEach((game) => {
+        if (!game.endGame) {
+          game.start();
+        }
+
+        document.addEventListener('keydown', (event) => game.onKeyEvent(event));
+        document.addEventListener('keyup', (event) => game.onKeyEvent(event));
+
+        setTimeout(() => {
+          let intervalId = setInterval(() => {
+            if (game.isGameOver) {
+              gamePanel.classList.add('hidden');
+              gameOverPanel.classList.remove('hidden');
+            }
+
+            if (game.winGame) { 
+              game.winGame = false;             
+              const random = Math.floor(Math.random() * 10)
+              if (random <= 4) {
+                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame1.jpg')"; 
+                } else {
+                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame2.jpg')";
+                }
+              gamePanel.classList.add('hidden');
+              winGamePanel.classList.remove('hidden');
             }
 
             if (game.endGame) {
@@ -98,9 +170,15 @@ window.addEventListener('load',() => {
     hidenAndLoadData();
   });
 
+  const buttonScoresThree = document.querySelector('.button-score-three');
+  buttonScoresThree.addEventListener('click', () => {
+    hidenAndLoadData();
+  })
+
   function hidenAndLoadData() {
     startPanel.classList.add('hidden');
     gameOverPanel.classList.add('hidden');
+    winGamePanel.classList.add('hidden');
     scoresPanel.classList.remove('hidden');
     fillData();
     // scores.forEach((player) => {
@@ -115,7 +193,6 @@ window.addEventListener('load',() => {
     const scoreData = JSON.parse(localStorage.getItem(SCORE_KEY))
     //const newPlayerScore = [];
     ulScores.innerHTML = '';
-    console.log(Object.keys(scoreData).length);
     for (const key in scoreData) {
       if (scoreData.hasOwnProperty(key)) {
         //newPlayerScore.push({key: key, score:scoreData[key]})
@@ -128,9 +205,6 @@ window.addEventListener('load',() => {
       }
     }
   }
-
-  // [[{key:Lucas, points: 10}], [{key: javier, points:7}]]
-
 
   // Button Main menu
   const mainMenu = document.querySelector('.mainMenu');
@@ -146,5 +220,14 @@ window.addEventListener('load',() => {
     startPanel.classList.remove('hidden');
     games = games.filter((game) => !game.endGame);
   });
+
+  const mainMenuThree = document.querySelector('.button-mainMenuThree');
+  mainMenuThree.addEventListener('click', () => {
+    winGamePanel.classList.add('hidden');
+    startPanel.classList.remove('hidden');
+    games = games.filter((game) => !game.endGame);
+  });
+
+
 });
 
