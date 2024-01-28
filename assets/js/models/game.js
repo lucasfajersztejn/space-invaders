@@ -25,19 +25,32 @@ class Game {
 
   generateEnemies() {
     this.enemies_respawn = 0;
-    let margin = 150;
-    const limit = 20; //ENEMY_WIDTH_LIMIT / Math.ceil(ENEMY_WIDTH / 5);
+    let margin = 95;
+    const limit = 18;
     const enemy_w = Math.ceil(ENEMY_WIDTH / 5);
 
-    for (let i = 0; i < limit; i++) {
-      if (i === 0) {
-        this.enemies.push(new Enemy(this.ctx, margin, 20, this.sound_permission))
-      } else if (i % 2 === 0) {
-        this.enemies.push(new Enemy(this.ctx, margin, 20, this.sound_permission))
-      } else {
-        margin += 60;
-      }
-    }  
+    if (this.score.points < 40) {
+      for (let i = 0; i < limit; i++) {
+        if (i === 0) {
+          this.enemies.push(new Enemy(this.ctx, margin, 85, this.sound_permission))
+        } else if (i % 2 === 0) {
+          this.enemies.push(new Enemy(this.ctx, margin, 85, this.sound_permission))
+        } else {
+          margin += 60;
+        }
+      }  
+    } else {
+      for (let i = 0; i < limit; i++) {
+        if (i === 0) {
+          this.enemies.push(new EnemySpaceInvader(this.ctx, margin, 85, this.sound_permission))
+        } else if (i % 2 === 0) {
+          this.enemies.push(new EnemySpaceInvader(this.ctx, margin, 85, this.sound_permission))
+        } else {
+          margin += 60;
+        }
+      }  
+    }
+    
   }
 
   start() {
@@ -45,6 +58,7 @@ class Game {
       
       this.drawIntervalId = setInterval(() => {
         this.clear();
+
         if (!this.isGameOver) {
           this.move();
           this.checkCollisions();
@@ -77,9 +91,7 @@ class Game {
   }
 
   stopAllSounds() {
-    //this.ship.shootSound.pause();
     this.ship.sound_permission = false
-    //this.enemies.forEach(enemy => enemy.shootEnemySound.pause());
     this.sound_permission = false;
     this.enemies.forEach(enemy => enemy.sound_permission = false);
   }
@@ -100,7 +112,7 @@ class Game {
   }
 
   gameOver() {
-    this.score.heartImages.pop(); // Elimina el último corazon
+    this.score.heartImages.pop(); // Remove the last heart
     this.isGameOver = true;
     this.enemies.splice(0, this.enemies.length);
     this.ship.sprite['isReady'] = false;
@@ -146,7 +158,7 @@ class Game {
       }
     });
 
-    this.enemies.forEach((enemy) => enemy.collision(this.ship, this.gameOver));
+    this.enemies.forEach((enemy) => enemy.collision(this.ship));
     if (this.ship.isDead()) {
       this.gameOver();
       
@@ -158,11 +170,11 @@ class Game {
     this.enemies.forEach((enemy) => enemy.move());
 
     if (this.score.points === 20) {
-      ENEMY_SPEED = 5;
+      ENEMY_SPEED = 4;
     } else if (this.score.points === 40) {
-      ENEMY_SPEED = 7;
+      ENEMY_SPEED = 5;
     } else if (this.score.points === 60) {
-      ENEMY_SPEED = 9;
+      ENEMY_SPEED = 7;
     }
   }
 

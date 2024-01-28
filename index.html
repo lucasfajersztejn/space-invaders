@@ -15,6 +15,10 @@
 <body>
 
   <section>
+    <img id="bgLogo" src="/assets/img/bgLogo.png" alt="space invaders logo">
+  </section>
+
+  <section>
     <div id="start-panel">
       <button id="button-start">START</button>
       <button class="button-score">SCORE</button>
@@ -40,9 +44,9 @@
     </div>
 
     <div id="container-canvas" class="container-canvas hidden">
-      <img id="soundIcon" src="/assets/img/sound.png" alt="sound icon">
+      <img id="soundIcon" src="/assets/img/soundOn2.png" alt="sound icon">
+      <img id="soundIconTwo" class="hidden" src="/assets/img/soundOf.png" alt="mute icon">
       <canvas id="canvas-game"></canvas>
-      
     </div>
   </section>
   
@@ -51,6 +55,7 @@
   <script src="/assets/js/models/points.js"></script>
   <script src="/assets/js/models/ship.js"></script>
   <script src="/assets/js/models/enemy.js"></script>
+  <script src="/assets/js/models/enemySpaceInvader.js"></script>
   <script src="/assets/js/models/bullet.js"></script>
   <script src="/assets/js/models/bulletEnemy.js"></script>
   <script src="/assets//js/models/bulletSpecial.js"></script>

@@ -1,11 +1,11 @@
-class Enemy {
+class EnemySpaceInvader {
   constructor(ctx, x, y, sound_permission) {
     this.ctx = ctx;
   
     this.x = x;
     this.y = y;
-    this.w = Math.ceil(ENEMY_WIDTH / 10);
-    this.h = Math.ceil(ENEMY_HEIGHT / 6);
+    this.w = Math.ceil(ENEMY_SPACE_INVADER_WIDTH / 7);
+    this.h = Math.ceil(ENEMY_SPACE_INVADER_HEIGHT / 7);
 
     this.vy = ENEMY_SPEED;
     this.vx = ENEMY_SPEED;
@@ -23,7 +23,7 @@ class Enemy {
     this.shootEnemySound = new Audio('/assets/sounds/enemies_shoot.mp3');
 
     this.sprite = new Image();
-    this.sprite.src = `/assets/img/alien1Sprite.png`;
+    this.sprite.src = `/assets/img/alien2.png`;
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 2;
@@ -63,10 +63,10 @@ class Enemy {
     //   this.timeCounter = 0;
     // } else if (this.timeCounter === 120) {
     //   if (this.lr % 2 === 0) {
-    //     this.x += this.w * 3;
+    //     this.x += this.w * 2;
     //     this.lr++;
     //   } else {
-    //     this.x -= this.w * 3;
+    //     this.x -= this.w * 2;
     //     this.lr++;
     //   }
     // }

@@ -24,10 +24,12 @@ window.addEventListener('load',() => {
     soundClickButton.play()
     games = games.filter((game) => !game.endGame);
     games.push(new Game('canvas-game'));
+    count = 0;
     setTimeout(() => {
-      
       startPanel.classList.add('hidden');
       gamePanel.classList.remove('hidden');
+      buttonMuteCanvas.classList.add('hidden');
+      buttonSoundCanvas.classList.remove('hidden');
 
       games.forEach((game) => {
         if (!game.endGame){
@@ -74,10 +76,13 @@ window.addEventListener('load',() => {
     soundClickButton.play()
     games = games.filter((game) => !game.endGame);
     games.push(new Game('canvas-game'));
+    count = 0;
 
     setTimeout(() => {
       gameOverPanel.classList.add('hidden');
       gamePanel.classList.remove('hidden');
+      buttonMuteCanvas.classList.add('hidden');
+      buttonSoundCanvas.classList.remove('hidden');
 
       games.forEach((game) => {
         if (!game.endGame) {
@@ -120,12 +125,14 @@ window.addEventListener('load',() => {
   restartTwo.addEventListener('click', () => {
     soundClickButton.play()
     games = games.filter((game) => !game.endGame);
-    console.log(games);
     games.push(new Game('canvas-game'));
+    count = 0;
 
     setTimeout(() => {
       winGamePanel.classList.add('hidden');
       gamePanel.classList.remove('hidden');
+      buttonMuteCanvas.classList.add('hidden');
+      buttonSoundCanvas.classList.remove('hidden');
 
       games.forEach((game) => {
         if (!game.endGame) {
@@ -247,26 +254,24 @@ window.addEventListener('load',() => {
       if (count === 0) {
         count++;
         game.stopAllSounds();
-      } else if (count === 1) {
+        buttonSoundCanvas.classList.add('hidden');
+        buttonMuteCanvas.classList.remove('hidden')
+      } 
+    });
+  });
+
+  const buttonMuteCanvas = document.getElementById('soundIconTwo');
+  buttonMuteCanvas.addEventListener('click', () => {
+    games = games.filter((game) => !game.endGame);
+    games.forEach((game) => {
+      if (count === 1) {
         count--;
         game.playAllSound();
+        buttonMuteCanvas.classList.add('hidden');
+        buttonSoundCanvas.classList.remove('hidden');
       }
-      
-      // if (count === 0) {
-      //   count++;
-      //   game.ship.sound_permission = false;
-      //   game.enemies.forEach((enemy) => enemy.sound_permission = false);
-      //   console.log('false');
-
-      // } else if (count === 1) {
-      //   count--;
-      //   game.ship.sound_permission = true;
-      //   game.enemies.forEach((enemy) => enemy.sound_permission = true);
-      //   console.log('true');
-      // }      
     });
-    
-  });
+  })
 
 
 });
