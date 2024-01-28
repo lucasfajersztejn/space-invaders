@@ -5,9 +5,10 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('/assets/img/posibles-backgrounds/background-space.avif');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url('/assets/img/bgLogo.png'), url('/assets/img/posibles-backgrounds/background-space.avif');
+  background-repeat: no-repeat, no-repeat;
+  background-size: 230px, cover;
+  background-position: top 20px center, center center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +18,7 @@ body {
   position: absolute;
   height: 8%;
   top: 2%;
-  left: 45%;
+  left: 44.5%;
 }
 
 
