@@ -13,8 +13,8 @@ class EnemySpaceInvader {
     this.shootCount = 0
     this.bullets = [];
 
-    this.candeciaDeTiro = Math.floor(Math.random() * 500) + 360
-    //this.number = n;
+    this.randomAlien = Math.floor(Math.random() * 10);
+    this.rateOfFire = Math.floor(Math.random() * 500) + 360
     this.timeCounter = 0;
     this.lr = 0
     this.lives = 1;
@@ -23,7 +23,7 @@ class EnemySpaceInvader {
     this.shootEnemySound = new Audio('/assets/sounds/enemies_shoot.mp3');
 
     this.sprite = new Image();
-    this.sprite.src = `/assets/img/alien2.png`;
+    this.sprite.src = `/assets/img/alien${this.randomAlien}.png`;
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 2;
@@ -93,7 +93,7 @@ class EnemySpaceInvader {
   draw() {
     if (this.sprite.isReady) {
       this.shootCount++;
-      if (this.shootCount > this.candeciaDeTiro) {
+      if (this.shootCount > this.rateOfFire) {
         this.shootCount = 0
         this.bullets.push(new Enemybullet(this.ctx, this.x + (this.w / 2), this.y + this.h, -5));
         

@@ -45,7 +45,8 @@ class Ship {
       left: false,
       isShutting: false,
       keyUp: false,
-      specialAttack: false
+      specialAttack: false,
+      trick: false
     }
 
     this.bullets = [];
@@ -85,7 +86,6 @@ class Ship {
   onKeyEvent(event, points) {
     const enabled = event.type === 'keydown';
     const keyUp = event.type === 'keyup';
-
     switch (event.keyCode) {
       case KEY_RIGHT:
         this.movements.right = enabled;  

@@ -16,6 +16,10 @@ const KEY_RIGHT = 39;
 const KEY_LEFT = 37;
 const KEY_FIRE = 32;
 const KEY_SPECIAL_POWER = 17;
+const KEY_E = 69;
+const KEY_R = 82;
+const KEY_T = 84;
+const KEY_U = 85;
 
 /**** BULLET SHIP ****/
 const BULLET_WIDTH = 200;

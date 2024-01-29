@@ -72,7 +72,6 @@ class Game {
             this.ship.spriteExplotion['isReady'] = false;
           }
         }
-        
         this.win();
       }, this.fps);
     }
@@ -167,7 +166,11 @@ class Game {
 
   move() {
     this.ship.move();
-    this.enemies.forEach((enemy) => enemy.move());
+    this.enemies.forEach((enemy) => {
+      enemy.vy = ENEMY_SPEED;
+      enemy.vx = ENEMY_SPEED;
+      enemy.move();
+    });
 
     if (this.score.points === 20) {
       ENEMY_SPEED = 4;

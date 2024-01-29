@@ -1,9 +1,15 @@
 window.addEventListener('load',() => {
-  // const game = new Game('canvas-game');
+
   let games = [];
   const scores = [];
   let count = 0;
   const soundClickButton = new Audio('/assets/sounds/buttonClick.mp3')
+
+  const stages = {
+    startMenu: false,
+    gameOver: false,
+    winGame: false
+  }
 
   games.forEach((game) => {
     document.addEventListener('keydown', (event) => game.onKeyEvent(event));
@@ -176,12 +182,14 @@ window.addEventListener('load',() => {
   buttonScores.addEventListener('click', () => {
     soundClickButton.play();
     hidenAndLoadData();
+    stages.startMenu = true;
   });
 
   const buttonScoresTwo = document.querySelector('.button-score-two');
   buttonScoresTwo.addEventListener('click', () => {
     soundClickButton.play()
     hidenAndLoadData();
+    stages.gameOver = true;
   });
 
   const buttonScoresThree = document.querySelector('.button-score-three');
@@ -190,29 +198,29 @@ window.addEventListener('load',() => {
     hidenAndLoadData();
   })
 
+  // Button back
+  const buttonBack = document.querySelector('.back');
+  buttonBack.addEventListener('click', () => { 
+    if (stages.startMenu) {
+      scoresPanel.classList.add('hidden');
+      startPanel.classList.remove('hidden');
+      stages.startMenu = false;
+    } else if (stages.gameOver)
+  });
+
   function hidenAndLoadData() {
     startPanel.classList.add('hidden');
     gameOverPanel.classList.add('hidden');
     winGamePanel.classList.add('hidden');
     scoresPanel.classList.remove('hidden');
     fillData();
-    // scores.forEach((player) => {
-    //   const newLi = document.createElement('li');
-    //   newLi.classList.add('li-score');
-    //   newLi.innerText = `Player: ${player.key} - Score: ${player.score}`
-    //   ulScores.appendChild(newLi);
-    // });
   }
   
   function fillData() {
     const scoreData = JSON.parse(localStorage.getItem(SCORE_KEY))
-    //const newPlayerScore = [];
     ulScores.innerHTML = '';
     for (const key in scoreData) {
       if (scoreData.hasOwnProperty(key)) {
-        //newPlayerScore.push({key: key, score:scoreData[key]})
-        //scores.push({key: key, score: scoreData[key]});
-        //scores[key] = scoreData[key]
         const newLi = document.createElement('li');
         newLi.classList.add('li-score');
         newLi.innerText = `Player: ${key} - Score: ${scoreData[key]}`
@@ -221,7 +229,7 @@ window.addEventListener('load',() => {
     }
   }
 
-  // Button Main menu
+  // Button Main Menu
   const mainMenu = document.querySelector('.mainMenu');
   mainMenu.addEventListener('click', () => {
     soundClickButton.play();
