@@ -5,10 +5,10 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('/assets/img/bgLogo.png'), url('/assets/img/posibles-backgrounds/background-space.avif');
-  background-repeat: no-repeat, no-repeat;
-  background-size: 230px, cover;
-  background-position: top 20px center, center center;
+  background-image: url('/assets/img/posibles-backgrounds/background-space.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
