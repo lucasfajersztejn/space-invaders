@@ -42,9 +42,9 @@ class Game {
     } else {
       for (let i = 0; i < limit; i++) {
         if (i === 0) {
-          this.enemies.push(new EnemySpaceInvader(this.ctx, margin, 85, this.sound_permission))
+          this.enemies.push(new EnemySpaceInvader(this.ctx, margin, 95, this.sound_permission))
         } else if (i % 2 === 0) {
-          this.enemies.push(new EnemySpaceInvader(this.ctx, margin, 85, this.sound_permission))
+          this.enemies.push(new EnemySpaceInvader(this.ctx, margin, 95, this.sound_permission))
         } else {
           margin += 60;
         }
