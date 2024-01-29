@@ -196,16 +196,27 @@ window.addEventListener('load',() => {
   buttonScoresThree.addEventListener('click', () => {
     soundClickButton.play()
     hidenAndLoadData();
-  })
+    stages.winGame = true;
+  });
 
   // Button back
-  const buttonBack = document.querySelector('.back');
+  const buttonBack = document.querySelector('.backPanel');
   buttonBack.addEventListener('click', () => { 
+    soundClickButton.play();
+
     if (stages.startMenu) {
       scoresPanel.classList.add('hidden');
       startPanel.classList.remove('hidden');
       stages.startMenu = false;
-    } else if (stages.gameOver)
+    } else if (stages.gameOver) {
+      scoresPanel.classList.add('hidden');
+      gameOverPanel.classList.remove('hidden');
+      stages.gameOver = false;
+    } else if (stages.winGame) {
+      scoresPanel.classList.add('hidden');
+      winGamePanel.classList.remove('hidden');
+      stages.winGame = false;
+    }
   });
 
   function hidenAndLoadData() {

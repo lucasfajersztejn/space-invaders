@@ -187,7 +187,7 @@ body {
 .scores-list {
   position: absolute;
   top: 85%;
-  left: 20%;
+  left: 22%;
   padding: 0;
   background-color: black;
   opacity: 0.6;
@@ -255,10 +255,10 @@ body {
   opacity: 0.8;
 }
 
-.back {
+.backPanel {
   position: absolute;
   top: 85%;
-  left: 5%;
+  left: 3%;
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -273,12 +273,12 @@ body {
   opacity: 0.8;
 }
 
-.back:hover {
+.backPanel:hover {
   background-color: #005c99;
   opacity: 0.6;
 }
 
-.back:active {
+.backPanel:active {
   background-color: rgb(0, 63, 100);
   opacity: 0.4;
 }
