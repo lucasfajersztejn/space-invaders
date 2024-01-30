@@ -33,15 +33,6 @@ Win game
 - CSS
 - JavaScript
 
-## Instalation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/lucasfajersztejn/space-invaders.git
-
-2. open index.html and play!
-
 ## Functionalities
 
 ##### 1. Start Menu:
