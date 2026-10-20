@@ -1,4 +1,4 @@
-class Points {
+﻿class Points {
 
   constructor(ctx, x, y, points = 0, lives = 0) {
     this.ctx = ctx;
@@ -18,7 +18,7 @@ class Points {
     this.heartImages = [];
 
     this.sprite = new Image();
-    this.sprite.src = '/assets/img/heart.png';
+    this.sprite.src = 'assets/img/heart.png';
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 1;

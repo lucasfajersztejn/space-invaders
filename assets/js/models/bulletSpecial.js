@@ -1,4 +1,4 @@
-class SpecialBullet {
+﻿class SpecialBullet {
   constructor(ctx, x, y, vy = SPEED_BULLET) {
     this.ctx = ctx;
 
@@ -11,7 +11,7 @@ class SpecialBullet {
     this.angle = 0;
 
     this.sprite = new Image();
-    this.sprite.src = '/assets/img/bulletSpecial.png';
+    this.sprite.src = 'assets/img/bulletSpecial.png';
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 1;

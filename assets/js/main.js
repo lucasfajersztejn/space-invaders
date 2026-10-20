@@ -1,9 +1,9 @@
-window.addEventListener('load',() => {
+﻿window.addEventListener('load',() => {
 
   let games = [];
   const scores = [];
   let count = 0;
-  const soundClickButton = new Audio('/assets/sounds/buttonClick.mp3')
+  const soundClickButton = new Audio('assets/sounds/buttonClick.mp3')
 
   const stages = {
     startMenu: false,
@@ -57,9 +57,9 @@ window.addEventListener('load',() => {
               game.winGame = false;    
               const random = Math.floor(Math.random() * 10)
               if (random <= 4) {
-                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame1.jpg')"; 
+                winGamePanel.style.backgroundImage = "url('assets/img/bgWinGame1.jpg')"; 
                 } else {
-                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame2.jpg')";
+                winGamePanel.style.backgroundImage = "url('assets/img/bgWinGame2.jpg')";
                 }
               gamePanel.classList.add('hidden');
               winGamePanel.classList.remove('hidden');
@@ -109,9 +109,9 @@ window.addEventListener('load',() => {
               game.winGame = false;        
               const random = Math.floor(Math.random() * 10)
               if (random <= 4) {
-                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame1.jpg')"; 
+                winGamePanel.style.backgroundImage = "url('assets/img/bgWinGame1.jpg')"; 
                 } else {
-                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame2.jpg')";
+                winGamePanel.style.backgroundImage = "url('assets/img/bgWinGame2.jpg')";
                 }
               gamePanel.classList.add('hidden');
               winGamePanel.classList.remove('hidden');
@@ -159,9 +159,9 @@ window.addEventListener('load',() => {
               game.winGame = false;             
               const random = Math.floor(Math.random() * 10)
               if (random <= 4) {
-                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame1.jpg')"; 
+                winGamePanel.style.backgroundImage = "url('assets/img/bgWinGame1.jpg')"; 
                 } else {
-                winGamePanel.style.backgroundImage = "url('/assets/img/bgWinGame2.jpg')";
+                winGamePanel.style.backgroundImage = "url('assets/img/bgWinGame2.jpg')";
                 }
               gamePanel.classList.add('hidden');
               winGamePanel.classList.remove('hidden');

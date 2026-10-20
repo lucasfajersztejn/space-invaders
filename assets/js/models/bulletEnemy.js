@@ -1,4 +1,4 @@
-class Enemybullet {
+﻿class Enemybullet {
   constructor(ctx, x, y, vy = SPEED_BULLET) {
     this.ctx = ctx;
 
@@ -11,7 +11,7 @@ class Enemybullet {
     this.angle = 0;
 
     this.sprite = new Image();
-    this.sprite.src = '/assets/img/bulletEnemy.png';
+    this.sprite.src = 'assets/img/bulletEnemy.png';
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 1;

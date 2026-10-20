@@ -1,4 +1,4 @@
-/**** GAME ****/
+﻿/**** GAME ****/
 const WINDOW_WIDTH = 768;
 const WINDOW_HEIGHT = 768;
 const FPS = 1000 / 60;

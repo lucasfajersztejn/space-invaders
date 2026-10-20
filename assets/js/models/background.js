@@ -1,4 +1,4 @@
-class Background {
+﻿class Background {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 0;
@@ -7,7 +7,7 @@ class Background {
     this.h = this.ctx.canvas.height;
 
     this.sprite = new Image();
-    this.sprite.src = '/assets/img/bgGame.jpg';
+    this.sprite.src = 'assets/img/bgGame.jpg';
     this.sprite.onload = () => {
       this.sprite.isReady = true;
     }
