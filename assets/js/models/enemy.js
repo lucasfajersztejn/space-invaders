@@ -1,4 +1,4 @@
-class Enemy {
+﻿class Enemy {
   constructor(ctx, x, y, sound_permission) {
     this.ctx = ctx;
   
@@ -20,10 +20,10 @@ class Enemy {
     this.lives = 1;
     this.animationTick = 0;
     this.sound_permission = sound_permission; 
-    this.shootEnemySound = new Audio('/assets/sounds/enemies_shoot.mp3');
+    this.shootEnemySound = new Audio('assets/sounds/enemies_shoot.mp3');
 
     this.sprite = new Image();
-    this.sprite.src = `/assets/img/alien1Sprite.png`;
+    this.sprite.src = `assets/img/alien1Sprite.png`;
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 2;

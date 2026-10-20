@@ -1,4 +1,4 @@
-class Game {
+﻿class Game {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     this.canvas.width = WINDOW_WIDTH;
@@ -115,7 +115,7 @@ class Game {
     this.isGameOver = true;
     this.enemies.splice(0, this.enemies.length);
     this.ship.sprite['isReady'] = false;
-    const shipExplosionSound = new Audio('/assets/sounds/ship_explosion.mp3');
+    const shipExplosionSound = new Audio('assets/sounds/ship_explosion.mp3');
     if (this.sound_permission) {
       shipExplosionSound.play();
     }

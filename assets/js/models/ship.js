@@ -1,4 +1,4 @@
-class Ship {
+﻿class Ship {
   constructor(ctx, x, y) {
     this.ctx = ctx;
 
@@ -17,7 +17,7 @@ class Ship {
     this.sound_permission = true;
 
     this.sprite = new Image()
-    this.sprite.src = '/assets/img/ship.png';
+    this.sprite.src = 'assets/img/ship.png';
     this.sprite.verticalFrames = 1;
     this.sprite.verticalFrameIndex = 0;
     this.sprite.horizontalFrames = 1;
@@ -29,7 +29,7 @@ class Ship {
     }
 
     this.spriteExplotion = new Image();
-    this.spriteExplotion.src = '/assets/img/explosion.png';
+    this.spriteExplotion.src = 'assets/img/explosion.png';
     this.spriteExplotion.verticalFrames = 1;
     this.spriteExplotion.verticalFrameIndex = 0;
     this.spriteExplotion.horizontalFrames = 15;
@@ -64,7 +64,7 @@ class Ship {
       setTimeout(() => this.movements.isShutting = false, SHIP_BULLET_RECHARGED);
     }
 
-    const shootSound = new Audio('/assets/sounds/ship_shoot.mp3');
+    const shootSound = new Audio('assets/sounds/ship_shoot.mp3');
     if (this.sound_permission) {
       shootSound.play();
     }
