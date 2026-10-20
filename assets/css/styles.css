@@ -4,7 +4,7 @@ font-family: 'Press Start 2P', system-ui;
 body {
   margin: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('../img/posibles-backgrounds/background-space.avif');
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,16 +59,12 @@ body {
 }
 
 #start-panel {
-  width: 768px;
-  height: 768px;
   background-image: url('../img/posibles-backgrounds/start-panel2.jpg');
   background-size: cover;
   position: relative;
 }
 
 #winGame-panel {
-  width: 768px;
-  height: 768px;
   background-size: cover;
   position: relative;
 }
@@ -102,8 +98,6 @@ body {
 }
 
 #gameOver-panel {
-  width: 768px;
-  height: 768px;
   background-image: url('../img/GameOver.jpg');
   background-size: cover;
   position: relative;
@@ -145,8 +139,6 @@ body {
 }
 
 #scores-panel {
-  width: 768px;
-  height: 768px;
   background-image: url('../img/bgScore2.jpg');
   background-size: cover;
   position: relative;
