@@ -1,4 +1,4 @@
-# Space Invaders (IronHack first project)
+# Space Invaders 
 
 The task is to create a functional video game, where it is possible to win and/or lose. To carry out this challenge, I had one week and I chose to design a “tribute” game to Space Invaders.
 All background images that can be seen have been designed by artificial intelligence and retouched with photopea.com (photoshop).
@@ -54,10 +54,12 @@ This screen has 3 buttons __score__, __restart__ and __start menu__.
 ##### 5. Score:
 In this screen we can see the player's score, the information is taken from the browser's local storage.
 
-## How to Contribute
+### How to Contribute
 
 1. fork the repository.
 2. Create a new branch: git checkout -b new-functionality
 3. Make your changes and commit: git commit -m 'Add new functionality'.
 4. Upload your changes: git push origin new-functionality
 5. Open a pull request.
+
+### Thank you for reading this far. This was the IronHack first project.
